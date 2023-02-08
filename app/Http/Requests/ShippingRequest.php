@@ -13,7 +13,7 @@ class ShippingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class ShippingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id'=>'required|exists:settings',
+            'value'=>'required',
+            'plain_value'=>'nullable|numeric'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+//            'email.required'=>'يجب ادخال البريد الاكترونى',
+//            'email.email'=>'يجب ادخال بريد الكترونى صحيح',
+//            'password.required'=>'يجب ادخال الرقم السرى',
+
         ];
     }
 }
