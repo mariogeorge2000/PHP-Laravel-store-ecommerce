@@ -15,15 +15,23 @@ use Illuminate\Support\Facades\Route;
 
 //note that the prefix is admin for all file route
 
-Route::group(
-    [
+
+
+
+
+Route::group([
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function () {
 
 
-    Route::group(['namespace' => 'App\Http\Controllers\Dashboard', 'middleware' => 'auth:admin', 'prefix'=>'admin'], function () {
+    Route::group([
+        'namespace' => 'App\Http\Controllers\Dashboard',
+        'middleware' => 'auth:admin',
+        'prefix' => 'admin'
+    ], function () {
         Route::get('/', 'DashboardController@index')->name('admin.dashboard');
+        Route::get('logout', 'LoginController@logout')->name('admin.logout');
 
         Route::group(['prefix' => 'settings'], function () {
             Route::get('shipping-methods/{type}', 'SettingsController@editShippingMethods')->name('edit.shippings.methods');
@@ -32,7 +40,11 @@ Route::group(
     });
 
 
-    Route::group(['namespace' => 'App\Http\Controllers\Dashboard', 'middleware' => 'guest:admin','prefix'=>'admin'], function () {
+    Route::group([
+        'namespace' => 'App\Http\Controllers\Dashboard',
+        'middleware' => 'guest:admin',
+        'prefix' => 'admin'
+    ], function () {
         Route::get('login', 'LoginController@login')->name('admin.login');
         Route::post('login', 'LoginController@postLogin')->name('admin.post.login');
     });
