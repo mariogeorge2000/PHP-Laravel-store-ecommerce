@@ -17,35 +17,44 @@ class MainCategoriesController extends Controller
 
     public function create()
     {
-//        $categories =   Category::select('id','parent_id')->get();
+        $categories =   Category::select('id','parent_id')->get();
         return view('dashboard.categories.create' );
     }
 
     public function store(MainCategoryRequest $request){
         try {
+
             DB::beginTransaction();
+
             //validation
+
             if (!$request->has('is_active'))
                 $request->request->add(['is_active' => 0]);
             else
                 $request->request->add(['is_active' => 1]);
 
+            //if user choose main category then we must remove paret id from the request
 
-             $category=Category::create($request->except('_token'));
+            if($request -> type == 1) //main category
+            {
+                $request->request->add(['parent_id' => null]);
+            }
+
+            //if he choose child category we must add parent id
+
+
+            $category = Category::create($request->except('_token'));
 
             //save translations
             $category->name = $request->name;
             $category->save();
 
-
             return redirect()->route('admin.maincategories')->with(['success' => 'تم ألاضافة بنجاح']);
-
-
             DB::commit();
-        }catch (\Exception $ex){
-            DB::rollBack();
-            return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
 
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
     }
 

@@ -10,10 +10,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="">الرئيسية </a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{route('admin.subcategories')}}"> الاقسام
-                                        ألفرعية </a>
+                                <li class="breadcrumb-item"><a href="{{route('admin.tags')}}">  tags </a>
                                 </li>
-                                <li class="breadcrumb-item active"> أضافه قسم فرعي
+                                <li class="breadcrumb-item active">tag اضافة
                                 </li>
                             </ol>
                         </div>
@@ -27,7 +26,6 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> أضافة قسم فرعي </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -44,51 +42,16 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('admin.subcategories.store')}}"
+                                              action="{{route('admin.tags.store')}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
-
-
-                                            <div class="form-group">
-                                                <label> صوره القسم </label>
-                                                <label id="projectinput7" class="file center-block">
-                                                    <input type="file" id="file" name="photo">
-                                                    <span class="file-custom"></span>
-                                                </label>
-                                                @error('photo')
-                                                <span class="text-danger">{{$message}}</span>
-                                                @enderror
-                                            </div>
-
                                             <div class="form-body">
-
-                                                <h4 class="form-section"><i class="ft-home"></i> بيانات القسم </h4>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="projectinput2"> أختر القسم </label>
-                                                            <select name="parent_id" class="select2 form-control">
-                                                                <optgroup label="من فضلك أختر القسم ">
-                                                                    @if($categories && $categories -> count() > 0)
-                                                                        @foreach($categories as $category)
-                                                                            <option
-                                                                                value="{{$category -> id }}">{{$category -> name}}</option>
-                                                                        @endforeach
-                                                                    @endif
-                                                                </optgroup>
-                                                            </select>
-                                                            @error('parent_id')
-                                                            <span class="text-danger"> {{$message}}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
 
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اسم القسم
+                                                            <label for="projectinput1"> الاسم
                                                             </label>
                                                             <input type="text" id="name"
                                                                    class="form-control"
@@ -116,24 +79,9 @@
                                                         </div>
                                                     </div>
 
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-1">
-                                                            <input type="checkbox" value="1"
-                                                                   name="is_active"
-                                                                   id="switcheryColor4"
-                                                                   class="switchery" data-color="success"
-                                                                   checked/>
-                                                            <label for="switcheryColor4"
-                                                                   class="card-title ml-1">الحالة </label>
 
-                                                            @error("is_active")
-                                                            <span class="text-danger">{{$message }}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
                                                 </div>
+
                                             </div>
 
 
