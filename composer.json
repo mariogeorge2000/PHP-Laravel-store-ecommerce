@@ -12,8 +12,11 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "laravel/ui": "^4.2",
         "mcamara/laravel-localization": "*",
+        "pusher/pusher-php-server": "^7.2",
         "spatie/laravel-enum": "^3.0",
+        "spatie/laravel-multitenancy": "3.0",
         "yajra/laravel-datatables-oracle": "10.0"
     },
     "require-dev": {

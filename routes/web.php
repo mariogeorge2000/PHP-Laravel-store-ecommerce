@@ -17,3 +17,7 @@ Route::get('testLayout', function () {
     return view('layouts.admin');
 });
 
+
+Auth::routes();
+
+Route::get('/home', [\App\Http\Controllers\Site\HomeController::class, 'index'])->name('home');
