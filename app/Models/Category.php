@@ -63,4 +63,14 @@ class Category extends Model
         return $query-> where('is_active',1);
     }
 
+    //get all childrens=
+    public function children(){
+        return $this -> hasMany(Self::class,'parent_id');
+    }
+
+    public function products()
+    {
+        return $this -> belongsToMany(Product::class,'product_categories');
+    }
+
 }

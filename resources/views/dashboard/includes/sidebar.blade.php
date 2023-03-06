@@ -85,6 +85,7 @@
             </li>
 
 
+            @can('brands')
             <li class="nav-item"><a href=""><i class="la la-group"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">المنتجات  </span>
                     <span
@@ -99,6 +100,7 @@
                     </li>
                 </ul>
             </li>
+            @endcan
 
 
             <li class="nav-item"><a href=""><i class="la la-group"></i>
@@ -132,16 +134,30 @@
                 </ul>
             </li>
 
-
-            <li class="nav-item">
-                <a href=""><i class="la la-male"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">تذاكر المراسلات   </span>
+            <li class="nav-item"><a href=""><i class="la la-group"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">الصلاحيات  </span>
                     <span
-                        class="badge badge badge-danger  badge-pill float-right mr-2">0</span>
+                        class="badge badge badge-warning  badge-pill float-right mr-2"></span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
-                                          data-i18n="nav.dash.ecommerce"> تذاكر الطلاب </a>
+                    <li class="active"><a class="menu-item" href="{{route('admin.roles.index')}}"
+                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.roles.create')}}" data-i18n="nav.dash.crypto">أضافة
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href=""><i class="la la-male"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">مستخدمي لوحه التحكم </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href="{{route('admin.users.index')}}"
+                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.users.create')}}" data-i18n="nav.dash.crypto">أاضافة
+                            جديدة </a>
                     </li>
                 </ul>
             </li>
@@ -162,6 +178,16 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li><a class="menu-item" href="#"
+                           data-i18n="nav.templates.vert.main"> {{__('admin/sidebar.main slider')}} </a>
+                        <ul class="menu-content">
+                            <li><a class="menu-item" href="{{route('admin.sliders.create')}}"
+                                   data-i18n="nav.templates.vert.classic_menu">صور الاسليدر </a>
+                            </li>
+                        </ul>
+                    </li>
+
                 </ul>
             </li>
             <li class=" navigation-header">
